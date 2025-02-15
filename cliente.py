@@ -10,7 +10,7 @@ PORT = 500 # Porta especificada no servidor, se for alterada lá então deve ser
 contextConfig = ssl.create_default_context() 
 # Carrega o certificado do servidor para poder validar com quem se está comunicando
 # Já que o certificado é autoassinado sem esse comando o programa não roda por segurança
-contextConfig.load_verify_locations(cafile="server.crt") 
+contextConfig.load_verify_locations(cafile="keys/server.crt") 
 # Comunicação 
 # Socket TCP/IP tentando se conectar com 127.0.0.1:500
 with socket.create_connection((HOST, PORT)) as sock:

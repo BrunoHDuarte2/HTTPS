@@ -7,7 +7,7 @@ PORT = 500
 # Estrutura TLS/SSL para criação do tunel de comunicação
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 # Certificado do servidor (autoassinado) e chave privada correspondente ao certificado
-context.load_cert_chain(certfile="server.crt", keyfile="server.key")
+context.load_cert_chain(certfile="keys/server.crt", keyfile="keys/server.key")
 # Socket criado e estabelecendo configs padrão: ip e porta de comunicação
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
     # Define o ip e a porta
@@ -22,7 +22,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
             print(f"Conexão estabelecida com {addr}")
             data = conn.recv(1024)
             print(f"Dados recebidos: {data.decode()}")
-            with open('gengar.png', "rb") as f:
+            with open('imagens/gengar.png', "rb") as f:
                 imagem = base64.b64encode(f.read()).decode('utf8')
             header = (
                 f"HTTP/1.1 200 OK\r\n"
